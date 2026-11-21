@@ -1,0 +1,33 @@
+version: '3'
+
+tasks:
+  default:
+    desc: Показать доступные команды
+    cmds:
+      - task --list
+
+  run:
+    desc: Запустить API (нужны PostgreSQL и настроенный .env)
+    cmds:
+      - go run ./cmd/api
+
+  test:
+    desc: Запустить все тесты
+    cmds:
+      - go test ./...
+
+  fmt:
+    desc: Отформатировать Go-код (изменяет файлы)
+    cmds:
+      - go fmt ./...
+
+  vet:
+    desc: Проверить код на типичные ошибки
+    cmds:
+      - go vet ./...
+
+  check:
+    desc: Последовательно запустить тесты и проверку кода
+    cmds:
+      - task: test
+      - task: vet
